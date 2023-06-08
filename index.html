@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+    
+        .draggable {
+            width: 100px;
+            height: 50px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="draggable" draggable="true" ondragstart="drag(event)">Draggable Element 1</div>
+        <div class="draggable" draggable="true" ondragstart="drag(event)">Draggable Element 2</div>
+        <div class="draggable" draggable="true" ondragstart="drag(event)">Draggable Element 3</div>
+    </div>
+    
+    <div class="container" id="container2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+    <script>
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var targetContainer = event.target;
+
+            if (targetContainer.classList.contains("draggable")) {
+                // If the target is a draggable element, find its parent container
+                targetContainer = targetContainer.parentNode;
+            }
+
+            targetContainer.appendChild(document.getElementById(data));
+        }
+    </script>
+</body>
+</html>
