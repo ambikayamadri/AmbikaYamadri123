@@ -1,4 +1,4 @@
-### In this code, we have two containers: container1 and container2. The elements inside container1 are draggable, while container2 allows dropping of elements. When an element is dragged (ondragstart event), we set its id as the data being transferred. On the container2, we have ondrop and ondragover event handlers. allowDrop prevents the default behavior when an element is dragged over container2, and drop appends the dragged element to container2.
+
 
 <!--
 **ambikayamadri/AmbikaYamadri** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
